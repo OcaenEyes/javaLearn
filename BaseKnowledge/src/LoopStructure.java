@@ -5,11 +5,11 @@ public class LoopStructure {
         for 循环
      */
 
-    public static void main(String []args){
+    public static void main(String[] args) {
         //while循环 ，布尔表达式为true 就会一直执行下去， 不满足条件则无法进入循环
         System.out.println("while 循环");
-        int x =10;
-        while (x<20){
+        int x = 10;
+        while (x < 20) {
             System.out.println(x);
             x++;
         }
@@ -21,12 +21,11 @@ public class LoopStructure {
             }while(布尔表达式);
          */
         System.out.println("do…while循环");
-        int y=10;
+        int y = 10;
         do {
             System.out.println(y);
             y++;
-        }while (y<10);
-
+        } while (y < 10);
 
 
         // for 循环，执行前就确定执行次数
@@ -36,7 +35,7 @@ public class LoopStructure {
             }
          */
         System.out.println("for 循环");
-        for (int z=0; z<20; z = z+1){
+        for (int z = 0; z < 20; z = z + 1) {
             System.out.println(z);
         }
 
@@ -49,13 +48,13 @@ public class LoopStructure {
             }
          */
         System.out.println("增强for 循环");
-        int [] numbers = {10,20,30,40,50};
-        for (int number : numbers){
+        int[] numbers = {10, 20, 30, 40, 50};
+        for (int number : numbers) {
             System.out.println(number);
         }
 
-        String [] names ={"gzy","g","zy"};
-        for (String name :names){
+        String[] names = {"gzy", "g", "zy"};
+        for (String name : names) {
             System.out.println(name);
         }
 
@@ -66,9 +65,9 @@ public class LoopStructure {
             break 跳出最里层的循环，并且继续执行该循环下面的语句。
          */
         System.out.println("break关键字");
-        int [] numbers1 = {10,20,30,40,50};
-        for (int number : numbers1){
-            if (number ==30){
+        int[] numbers1 = {10, 20, 30, 40, 50};
+        for (int number : numbers1) {
+            if (number == 30) {
                 break;
             }
             System.out.println(number);
@@ -83,9 +82,9 @@ public class LoopStructure {
             在 while 或者 do…while 循环中，程序立即跳转到布尔表达式的判断语句。
          */
         System.out.println("continue关键字");
-        int [] numbers2 = {10,20,30,40,50};
-        for (int number : numbers2){
-            if (number ==30){
+        int[] numbers2 = {10, 20, 30, 40, 50};
+        for (int number : numbers2) {
+            if (number == 30) {
                 continue;
             }
             System.out.println(number);

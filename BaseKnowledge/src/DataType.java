@@ -3,7 +3,7 @@ public class DataType {
         内置数据类型
         引用数据类型
      */
-    public static void main(String []args) {
+    public static void main(String[] args) {
         // byte
         System.out.println("基本类型：byte 二进制位数：" + Byte.SIZE);
         System.out.println("包装类：java.lang.Byte");

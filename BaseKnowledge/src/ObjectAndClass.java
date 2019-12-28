@@ -14,9 +14,9 @@ public class ObjectAndClass {
     //定义一个Dog类
     public static class Dog {
         //成员变量
-        String color;
+        StringDemo color;
         int age;
-        String name;
+        StringDemo name;
 
         //类方法
         void barking(){
@@ -36,7 +36,7 @@ public class ObjectAndClass {
         }
     }
 
-    public static void main(String []args) {
+    public static void main(String[]args) {
         /*
             创建对象
             声明： 声明一个对象， 对象类型 和对象名称
