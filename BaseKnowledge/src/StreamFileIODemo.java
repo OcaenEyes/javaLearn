@@ -27,6 +27,11 @@ public class StreamFileIODemo {
 
     }
 
+    public void ReadFileDemo(){
+        //FileInputStream 
+
+    }
+
     public static void main(String[] args) throws IOException {
         StreamFileIODemo s = new StreamFileIODemo();
         s.printChar();
