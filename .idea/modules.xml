@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AdvancedKnowledge/AdvancedKnowledge.iml" filepath="$PROJECT_DIR$/AdvancedKnowledge/AdvancedKnowledge.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ApiKnowledge/ApiKnowledge.iml" filepath="$PROJECT_DIR$/ApiKnowledge/ApiKnowledge.iml" />
       <module fileurl="file://$PROJECT_DIR$/BaseKnowledge/BaseKnowledge.iml" filepath="$PROJECT_DIR$/BaseKnowledge/BaseKnowledge.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FaceObject/FaceObject.iml" filepath="$PROJECT_DIR$/FaceObject/FaceObject.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/javaLearn.iml" filepath="$PROJECT_DIR$/.idea/javaLearn.iml" />
     </modules>
   </component>
