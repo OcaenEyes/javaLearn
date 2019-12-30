@@ -15,7 +15,7 @@
 
     <servlet>
         <servlet-name>详细信息</servlet-name>
-        <servlet-class>v1.info</servlet-class>
+        <servlet-class>v1.infoServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>详细信息</servlet-name>

@@ -5,8 +5,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import com.google.gson.Gson;
 
 public class infoServlet extends HttpServlet {
     private static final long serialVersionUID =1L;
@@ -35,18 +37,49 @@ public class infoServlet extends HttpServlet {
         List<infoModel> infolist = new ArrayList<infoModel>();
 //https://blog.csdn.net/qq_31242531/article/details/80497940
 
+
         //分页
-        if(page ==null || page.equals("0")){
-            if(list1.size() > 9){
-                for (int i=0;i<1;i++){
+        if (page == null || page.equals("0")) {
+            if (list1.size() > 9) {
+                for (int i = 0; i < 10; i++) {
+                    infolist.add(list1.get(i));
+                }
+            } else {
+                for (int i = 0; i < list1.size(); i++) {
                     infolist.add(list1.get(i));
                 }
             }
-            else {
-                for(int i=0;i<list1.size();i++){
+        } else {
+            int infoSize = list1.size();
+            int pageCount = infoSize / 10;
+
+            int pageNum = Integer.parseInt(page);
+            if (pageNum < pageCount) {
+                for (int i = 10 * pageNum; i < 10 * pageNum + 10; i++) {
+                    infolist.add(list1.get(i));
+                }
+            } else {
+                for (int i = 10 * pageNum; i < list1.size(); i++) {
                     infolist.add(list1.get(i));
                 }
             }
         }
+
+        infoModelPage nt = new infoModelPage(infolist.size(),infolist);
+
+        Gson gson = new Gson();
+        String json = gson.toJson(nt);
+
+        //输出界面
+        System.out.println(json);
+        resp.setContentType("text/json");
+        PrintWriter out = new PrintWriter(resp.getOutputStream());
+        out.print(json);
+        out.flush();
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        this.doGet(req,resp);
     }
 }
