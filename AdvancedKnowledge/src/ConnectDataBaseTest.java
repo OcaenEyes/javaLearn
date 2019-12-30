@@ -2,7 +2,7 @@ import java.sql.*;
 
 public class ConnectDataBaseTest {
     static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://localhost:3306/testdata?useSSL=false";
+    static final String DB_URL = "jdbc:mysql://localhost:3306/testdata?useSSL=false&serverTimezone=Asia/Shanghai";
     static final String USER = "root";
     static final String PASS = "123456";
 
@@ -21,7 +21,7 @@ public class ConnectDataBaseTest {
             System.out.println("实力化Statement对象...");
             stmt = conn.createStatement();
             String sql;
-            sql = "SELECT count(*) FROM teachers";
+            sql = "SELECT count(*) FROM youone";
             ResultSet rs = stmt.executeQuery(sql);
             System.out.println(rs);
 
