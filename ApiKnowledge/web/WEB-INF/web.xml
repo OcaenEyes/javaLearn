@@ -11,14 +11,4 @@
         <servlet-name>XXX</servlet-name>
         <url-pattern>/hello</url-pattern>
     </servlet-mapping>
-
-
-    <servlet>
-        <servlet-name>详细信息</servlet-name>
-        <servlet-class>v1.infoServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>详细信息</servlet-name>
-        <url-pattern>/api/info</url-pattern>
-    </servlet-mapping>
 </web-app>

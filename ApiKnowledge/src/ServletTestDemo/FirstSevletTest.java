@@ -8,19 +8,29 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class FirstSevletTest extends HttpServlet{
-    private String message;
+    private String getmessage;
+    private String postmessage;
 
     @Override
     public void init() throws ServletException{
-        message = "{\"sessionId\":\"B93BC32DA5654ADE1D0CA165E3D1BE3E\",\"success\":true,\"listdata\":[{\"cl_time\":\"2018-06-28 09:57:38\",\"apprecord\":\"false\"}]}\n";
+        getmessage = "{\"sessionId\":\"get\",\"success\":true,\"listdata\":[{\"cl_time\":\"2018-06-28 09:57:38\",\"apprecord\":\"false\"}]}\n";
+        postmessage = "{\"sessionId\":\"post\",\"success\":true,\"listdata\":[{\"cl_time\":\"2018-06-28 09:57:38\",\"apprecord\":\"false\"}]}\n";
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException {
+        System.out.println("处理get请求");
         resp.setContentType("text/json");
         PrintWriter out = resp.getWriter();
-        out.println(message);
+        out.println(getmessage);
     }
 
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("处理post请求");
+        resp.setContentType("text/json");
+        PrintWriter out = resp.getWriter();
+        out.println(postmessage);
+    }
 }

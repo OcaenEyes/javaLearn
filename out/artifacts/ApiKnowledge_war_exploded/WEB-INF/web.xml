@@ -5,20 +5,10 @@
          version="4.0">
     <servlet>
         <servlet-name>XXX</servlet-name>
-        <servlet-class>ServletTestDemo.test01</servlet-class>
+        <servlet-class>ServletTestDemo.FirstSevletTest</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>XXX</servlet-name>
         <url-pattern>/hello</url-pattern>
-    </servlet-mapping>
-
-
-    <servlet>
-        <servlet-name>详细信息</servlet-name>
-        <servlet-class>v1.infoServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>详细信息</servlet-name>
-        <url-pattern>/api/info</url-pattern>
     </servlet-mapping>
 </web-app>
