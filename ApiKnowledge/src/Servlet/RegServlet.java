@@ -48,7 +48,7 @@ public class RegServlet extends HttpServlet {
             //把注册的新保存在session中
             req.getSession().setAttribute("regUser",users);
 
-            req.getRequestDispatcher("../web/userinfo.jsp").forward(req,resp);
+            req.getRequestDispatcher("../userinfo.jsp").forward(req,resp);
 
         }catch (Exception e){
             e.printStackTrace();
