@@ -3,7 +3,7 @@ package DB;
 import java.sql.*;
 
 public class DBConn {
-    static final String db_driver = "com.mysql.cj.jdbc.Driver";
+    static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     static final String url = "jdbc:mysql://localhost:3306/testdata?useSSL=false";
     static final String user = "root";
     static final String pass = "123456";
@@ -13,8 +13,9 @@ public class DBConn {
 
     public static void init() {
         try {
-            Class.forName(db_driver);
+            Class.forName(JDBC_DRIVER);
             conn = DriverManager.getConnection(url, user, pass);
+            System.out.println("连接数据库成功");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (Exception e) {
@@ -42,6 +43,7 @@ public class DBConn {
         try {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery(sql);
+            System.out.println("数据查询成功");
 
         } catch (SQLException se) {
             System.out.println("SQL数据库查询失败");
@@ -55,6 +57,7 @@ public class DBConn {
     public static void closeConn() {
         try {
             conn.close();
+            System.out.println("数据库关闭成功");
         } catch (SQLException se) {
             System.out.println("SQL数据库关闭异常");
             se.printStackTrace();

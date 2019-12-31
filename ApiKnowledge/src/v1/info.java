@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class info implements infoInterface{
-    private PreparedStatement ptmt = null;
     private ResultSet rs = null;
 
     @Override
@@ -16,7 +15,7 @@ public class info implements infoInterface{
         List<infoModel> list = new ArrayList<infoModel>();
         try{
             DBConn.init();
-            ResultSet rs = DBConn.selectSQL("SELECT * FROM YOUONE");
+            rs = DBConn.selectSQL("SELECT * FROM YOUONE");
             while (rs.next()){
                 infoModel infomodel = new infoModel();
                 infomodel.setId(rs.getInt("id"));
