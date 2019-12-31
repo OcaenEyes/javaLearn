@@ -7,13 +7,14 @@ public class DBConn {
     static final String url = "jdbc:mysql://localhost:3306/testdata?useSSL=false";
     static final String user = "root";
     static final String pass = "123456";
-    static Connection conn = null;
-    static ResultSet rs = null;
-    static PreparedStatement ps = null;
+    static Connection conn;
+    static ResultSet rs;
+    static PreparedStatement ps;
 
-    public static void init() {
+    public static Connection init() {
         try {
             Class.forName(JDBC_DRIVER);
+
             conn = DriverManager.getConnection(url, user, pass);
             System.out.println("连接数据库成功");
         } catch (ClassNotFoundException e) {
@@ -22,6 +23,7 @@ public class DBConn {
             System.out.println("init [SQL驱动服务失败]");
             e.printStackTrace();
         }
+        return conn;
     }
 
     // 增删改查

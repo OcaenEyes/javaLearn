@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class test01 extends HttpServlet{
+public class FirstSevletTest extends HttpServlet{
     private String message;
 
     @Override
