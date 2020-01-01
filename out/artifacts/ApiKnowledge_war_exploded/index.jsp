@@ -12,6 +12,6 @@
   </head>
   <body>
   $END$
-  <a href="/hello" >gethello</a>
+  <a href="hello" >gethello</a>
   </body>
 </html>

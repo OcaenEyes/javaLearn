@@ -33,7 +33,7 @@
 <body>
 <h1>用户注册</h1>
 <hr>
-<form name="regForm" action="/reguser" method="post" >
+<form name="regForm" action="userinfo" method="post" >
     <table border="0" width="800" cellspacing="0" cellpadding="0">
         <tr>
             <td class="lalel">用户名：</td>
@@ -64,8 +64,7 @@
             <td class="label">出生日期：</td>
             <td class="controler">
                 <input name="birthday" type="text" id="control_date" size="10"
-                       maxlength="10" onclick="class Calendar{
-} new Calendar().show(this);"/>
+                       maxlength="10" onclick="new Calendar().show(this);" readonly="readonly" />
             </td>
         </tr>
         <tr>

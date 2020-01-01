@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@WebServlet("/reguser")
+@WebServlet("/userinfo")
 public class RegServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -21,7 +21,7 @@ public class RegServlet extends HttpServlet {
         Date birthday;
         String[] favorite;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
+        System.out.println("接收到表单提交请求");
         try {
             username = req.getParameter("username");
             password = req.getParameter("password");
@@ -30,8 +30,13 @@ public class RegServlet extends HttpServlet {
             introduce = req.getParameter("introduce");
             birthday = sdf.parse(req.getParameter("birthday"));
             favorite = req.getParameterValues("favorite");
-            accept = req.getParameter("accept");
-
+            if(req.getParameterValues("accept") != null){
+                accept = req.getParameter("accept");
+            }
+            else {
+                accept = "false";
+            }
+            
             users.setUsername(username);
             users.setPassword(password);
             users.setEamil(email);
@@ -39,7 +44,7 @@ public class RegServlet extends HttpServlet {
             users.setFavorite(favorite);
             users.setIntroduce(introduce);
             users.setBirthday(birthday);
-            if(accept.equals(true)){
+            if(accept.equals("true")){
                 users.setAccept(true);
             }else {
                 users.setAccept(false);
@@ -48,7 +53,7 @@ public class RegServlet extends HttpServlet {
             //把注册的新保存在session中
             req.getSession().setAttribute("regUser",users);
 
-            req.getRequestDispatcher("../userinfo.jsp").forward(req,resp);
+            req.getRequestDispatcher("/userinfo.jsp").forward(req,resp);
 
         }catch (Exception e){
             e.printStackTrace();
