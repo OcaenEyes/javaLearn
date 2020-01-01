@@ -62,26 +62,20 @@ public class YouoneInfoJdbcUtil {
      * 执行查询操作
      *
      * @param sql
-     * @param params
      * @return 查询结果
      * @throws SQLException
      */
-    public List<Map<String, Object>> selectResult(String sql, List<?> params) throws SQLException {
+    public List<Map<String, Object>> selectResult(String sql) throws SQLException {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         int index = 1;
         System.out.println(sql);
         pstmt = connection.prepareStatement(sql);
         System.out.println(pstmt);
-        System.out.println("预执行SQL");
-        if (params != null && !params.isEmpty()) {
-            for (int i = 0; i < params.size(); i++) {
-                pstmt.setObject(index++, params.get(i));
-            }
-        }
 
-        resultSet = pstmt.getResultSet();
+        resultSet = pstmt.executeQuery();
+        System.out.println(resultSet);
+
         ResultSetMetaData metaData = resultSet.getMetaData();
-        System.out.println("取到了metaData");
         int cols_len = metaData.getColumnCount();
         while (resultSet.next()) {
             Map<String, Object> map = new HashMap<String, Object>();

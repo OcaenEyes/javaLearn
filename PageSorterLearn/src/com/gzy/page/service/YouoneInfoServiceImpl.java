@@ -22,8 +22,8 @@ public class YouoneInfoServiceImpl implements YouoneInfoService{
     }
 
     @Override
-    public YouoneInfoPage<YouoneInfo> findInfo(YouoneInfo searchModel, int pageNum, int pageSize) {
-        YouoneInfoPage<YouoneInfo> result = youoneInfoDao.findInfo(searchModel,pageNum,pageSize);
+    public YouoneInfoPage<YouoneInfo> findInfo( int pageNum, int pageSize) {
+        YouoneInfoPage<YouoneInfo> result = youoneInfoDao.findInfo(pageNum,pageSize);
         return result;
     }
 }

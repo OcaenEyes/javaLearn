@@ -26,20 +26,18 @@ public class SublistServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        req.setCharacterEncoding("utf-8");
+        resp.setCharacterEncoding("utf-8");
+        resp.setContentType("text/json");
         // 接收request 参数
-        String textNumStr = req.getParameter("textNum");
-        String textNum = "VOL" + "." + textNumStr;
         String pageSizeStr = req.getParameter("pageSize");
         int pageSize = Integer.parseInt(pageSizeStr);
         String pageNumStr = req.getParameter("pageNum");
         int pageNum = Integer.parseInt(pageNumStr);
 
-        //组装查询条件
-        YouoneInfo searchModel = new YouoneInfo();
-        searchModel.setTextNum(textNum);
-
         // 调用service获取查询结果
-        YouoneInfoPage<YouoneInfo> result = youoneInfoService.findInfo(searchModel,pageNum,pageSize);
+        YouoneInfoPage<YouoneInfo> result = youoneInfoService.findInfo(pageNum,pageSize);
 
         // 返回查询结果到页面
         Gson gson = new Gson();
