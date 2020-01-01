@@ -32,10 +32,11 @@ public class YouoneInfoDaoImpl implements YouoneInfoDao {
         List<YouoneInfo> result = new ArrayList<YouoneInfo>();
         List<Object> paramList = new ArrayList<Object>();
         String textNum = searchModel.getTextNum();
-        StringBuilder sql = new StringBuilder("select * from youone");
+        StringBuilder sql = new StringBuilder("select * from youone where id=1");
         if(textNum != null && !textNum.equals("")){
-            sql.append("where textNum like ?");
-            paramList.add("%" + textNum + "%");
+//            sql.append("where textNum like ?");
+//            paramList.add("%" + textNum + "%");
+            System.out.println("跳过");
         }
 
         YouoneInfoJdbcUtil youoneInfoJdbcUtil = null;
