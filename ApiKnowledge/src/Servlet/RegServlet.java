@@ -36,7 +36,7 @@ public class RegServlet extends HttpServlet {
             else {
                 accept = "false";
             }
-            
+
             users.setUsername(username);
             users.setPassword(password);
             users.setEamil(email);
