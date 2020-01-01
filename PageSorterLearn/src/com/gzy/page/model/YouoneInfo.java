@@ -1,8 +1,9 @@
 package com.gzy.page.model;
 
 import java.io.Serializable;
+import java.util.Map;
 
-public class YouneInfo implements Serializable {
+public class YouoneInfo implements Serializable {
 
     private static final long serialVersionUID = -3741387742734765797L;
     private int id;
@@ -13,10 +14,10 @@ public class YouneInfo implements Serializable {
     private String mon;
     private String day;
 
-    public YouneInfo() {
+    public YouoneInfo() {
     }
 
-    public YouneInfo(int id, String imgUrl, String textNum, String imgAuther, String textContent, String mon, String day) {
+    public YouoneInfo(int id, String imgUrl, String textNum, String imgAuther, String textContent, String mon, String day) {
         this.id = id;
         this.imgUrl = imgUrl;
         this.textNum = textNum;
@@ -24,6 +25,16 @@ public class YouneInfo implements Serializable {
         this.textContent = textContent;
         this.mon = mon;
         this.day = day;
+    }
+
+    public YouoneInfo(Map<String, Object> map) {
+        this.id = (int) map.get("id");
+        this.imgUrl = (String) map.get("imgUrl");
+        this.textNum = (String) map.get("textNum");
+        this.imgAuther = (String) map.get("imgAuther");
+        this.textContent = (String) map.get("textContent");
+        this.mon = (String) map.get("mon");
+        this.day = (String) map.get("day");
     }
 
     public int getId() {
@@ -84,7 +95,7 @@ public class YouneInfo implements Serializable {
 
     @Override
     public String toString() {
-        return "YouneInfo{" +
+        return "YouoneInfo{" +
                 "id=" + id +
                 ", imgUrl='" + imgUrl + '\'' +
                 ", textNum='" + textNum + '\'' +

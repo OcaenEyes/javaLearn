@@ -12,6 +12,42 @@ public class YouoneInfoPage<T> implements Serializable {
     private int totalPages; //总共多少页
     private List<T> dataList;
 
+    public YouoneInfoPage(int pageNum, int pageSize, List<T> sourceList) {
+        if (sourceList == null) {
+            return;
+        }
+        //总记录条数
+        this.totalRecords = sourceList.size();
+
+        // 每页显示多少记录
+        this.pageSize = pageSize;
+
+        //获取总页数
+        if (sourceList.size() % pageSize == 0) {
+            this.totalPages = sourceList.size() / pageSize;
+        } else {
+            this.totalPages = (sourceList.size() / pageSize) + 1;
+        }
+
+        //获取当前页码
+        if (this.totalPages < pageNum) {
+            this.currentPage = this.totalPages;
+        } else {
+            this.currentPage = pageNum;
+        }
+
+        //起始索引
+        int fromIndex = this.pageSize * (this.currentPage - 1);
+        int toIndex;
+        if (this.pageSize * this.currentPage > this.totalRecords) {
+            toIndex = this.totalRecords;
+        } else {
+            toIndex = this.pageSize * this.currentPage;
+        }
+        this.dataList = sourceList.subList(fromIndex, toIndex);
+
+    }
+
     public YouoneInfoPage() {
     }
 

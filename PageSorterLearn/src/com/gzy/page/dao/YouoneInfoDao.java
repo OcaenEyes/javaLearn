@@ -1,9 +1,10 @@
-package com.gzy.page.service;
+package com.gzy.page.dao;
 
 import com.gzy.page.model.YouoneInfo;
 import com.gzy.page.model.YouoneInfoPage;
 
-public interface YouoneInfoService {
+
+public interface YouoneInfoDao {
 
     /**
      * 根据查询条件，查询分页信息
@@ -14,4 +15,5 @@ public interface YouoneInfoService {
      * @return 查询结果
      */
     public YouoneInfoPage<YouoneInfo> findInfo(YouoneInfo searchModel, int pageNum, int pageSize);
+
 }

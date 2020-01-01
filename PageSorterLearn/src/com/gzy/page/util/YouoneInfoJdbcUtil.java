@@ -19,15 +19,18 @@ public class YouoneInfoJdbcUtil {
     }
 
     public static void loadConfig() {
-        InputStream inStream = YouoneInfoJdbcUtil.class.getResourceAsStream("/jdbc.proterties");
+
+        InputStream inStream = YouoneInfoJdbcUtil.class.getResourceAsStream("/jdbc.properties");
         Properties prop = new Properties();
         USERNAME = prop.getProperty("jdbc.username");
         PASSWORD = prop.getProperty("jdbc.password");
-        JDBC_DRIVER = prop.getProperty("jdbc.driver");
+        JDBC_DRIVER = prop.getProperty("jdbc.jdbc_driver");
         URL = prop.getProperty("jdbc.url");
         try {
             prop.load(inStream);
+            System.out.println("加载SQL配置成功");
         } catch (Exception e) {
+            System.out.println("加载SQL配置失败");
             throw new RuntimeException("读取配置文件异常！", e);
         }
     }
@@ -44,7 +47,9 @@ public class YouoneInfoJdbcUtil {
         try {
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            System.out.println("数据库连接成功");
         } catch (Exception e) {
+            System.out.println("数据库连接失败");
             throw new RuntimeException("数据库连接失败", e);
         }
         return connection;
