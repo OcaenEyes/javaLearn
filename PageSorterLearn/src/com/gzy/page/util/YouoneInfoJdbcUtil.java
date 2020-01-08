@@ -1,39 +1,17 @@
 package com.gzy.page.util;
 
-import java.io.InputStream;
 import java.sql.*;
 import java.util.*;
 
 public class YouoneInfoJdbcUtil {
-    private static String USERNAME;
-    private static String PASSWORD;
-    private static String JDBC_DRIVER;
-    private static String URL;
+    private final String USERNAME = "root";
+    private final String PASSWORD ="123456";
+    private final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
+    private final String URL ="jdbc:mysql://localhost:3306/testdata?useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai";
 
     private Connection connection;
     private PreparedStatement pstmt;
     private ResultSet resultSet;
-
-    static {
-        loadConfig();
-    }
-
-    public static void loadConfig() {
-
-        InputStream inStream = YouoneInfoJdbcUtil.class.getResourceAsStream("/jdbc.properties");
-        Properties prop = new Properties();
-        USERNAME = prop.getProperty("jdbc.username");
-        PASSWORD = prop.getProperty("jdbc.password");
-        JDBC_DRIVER = prop.getProperty("jdbc.jdbc_driver");
-        URL = prop.getProperty("jdbc.url");
-        try {
-            prop.load(inStream);
-            System.out.println("加载SQL配置成功");
-        } catch (Exception e) {
-            System.out.println("加载SQL配置失败");
-            throw new RuntimeException("读取配置文件异常！", e);
-        }
-    }
 
     public YouoneInfoJdbcUtil() {
     }
@@ -44,6 +22,7 @@ public class YouoneInfoJdbcUtil {
      * @return数据库连接
      */
     public Connection getConnection() {
+
         try {
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
@@ -83,21 +62,19 @@ public class YouoneInfoJdbcUtil {
      * 执行查询操作
      *
      * @param sql
-     * @param params
      * @return 查询结果
      * @throws SQLException
      */
-    public List<Map<String, Object>> selectResult(String sql, List<?> params) throws SQLException {
+    public List<Map<String, Object>> selectResult(String sql) throws SQLException {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         int index = 1;
+        System.out.println(sql);
         pstmt = connection.prepareStatement(sql);
-        if (params != null && !params.isEmpty()) {
-            for (int i = 0; i < params.size(); i++) {
-                pstmt.setObject(index++, params.get(i));
-            }
-        }
+        System.out.println(pstmt);
 
-        resultSet = pstmt.getResultSet();
+        resultSet = pstmt.executeQuery();
+        System.out.println(resultSet);
+
         ResultSetMetaData metaData = resultSet.getMetaData();
         int cols_len = metaData.getColumnCount();
         while (resultSet.next()) {
