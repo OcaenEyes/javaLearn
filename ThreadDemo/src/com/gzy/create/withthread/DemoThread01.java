@@ -1,3 +1,5 @@
+package com.gzy.create.withthread;
+
 public class DemoThread01 {
     public static void main(String[] args){
         MyThread mt = new MyThread();
