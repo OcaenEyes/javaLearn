@@ -1,4 +1,4 @@
-package com.gzy;
+package com.gzy.lock;
 
 /**
  * @version 0.0.1

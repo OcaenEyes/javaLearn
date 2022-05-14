@@ -44,7 +44,7 @@ class Money {
     }
 }
 
-class Consumer implements Runnable {
+class People implements Runnable {
     private Money money = Money.getInstance();
     private ReentrantLock reentrantLock = new ReentrantLock();
 
@@ -63,9 +63,9 @@ class Consumer implements Runnable {
 
 public class SaveMoney {
     public static void main(String[] args) {
-        Consumer consumer = new Consumer();
-        Thread thread1 = new Thread(consumer);
-        Thread thread2 = new Thread(consumer);
+        People people = new People();
+        Thread thread1 = new Thread(people);
+        Thread thread2 = new Thread(people);
         thread1.setName("甲");
         thread2.setName("乙");
         thread1.start();
